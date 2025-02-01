@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: min(100% - 2 * 1rem, 45rem);
+    margin-inline: auto;
+    background-color: aliceblue;
+    color: whitesmoke;
+}
+
+nav {
+    ul {
+        background-color: grey;
+        border-radius: 0.5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 1rem;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        anchor-name: --profile-button;
+        width: 2rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 0;
+    }
+}
+
+dialog {
+    position-anchor: --profile-button;
+    position-try-fallbacks: --bottom-left;
+    gap: 0.5rem;
+    align-items: start;
+    background-color: darkgray;
+    padding: 1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    inset: anchor(bottom) auto auto anchor(right);
+    opacity: 0;
+    transition: display 1s ease-in-out, opacity 1s ease-in-out;
+    transition-behavior: allow-discrete;
+
+    &:popover-open {
+        display: grid;
+        opacity: 1;
+
+        @starting-style {
+            opacity: 0;
+        }
+    }
+
+    button {
+        width: fit-content;
+        background-color: transparent;
+        border: 0;
+        color: whitesmoke;
+    }
+}
+
+@position-try --bottom-left {
+    inset: anchor(bottom) anchor(right) auto auto;
+}
